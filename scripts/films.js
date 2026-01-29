@@ -1,57 +1,162 @@
 const filmsData = {
     "vi": {
         title: "phim",
-        description: "Những thước phim ngắn, những câu chuyện kể bằng ánh sáng và bóng tối.",
+        layout: "grid", // Đánh dấu đây là giao diện lưới
+        description: "Những câu chuyện được kể bằng ánh sáng.",
         items: [
+            
+
+
+
             {
-                title: "Giấc mơ trưa",
-                date: "2025",
-                excerpt: "Một đoạn phim ngắn về sự tĩnh lặng của phố thị lúc giữa trưa.",
-                content: "Link phim: [Vimeo/Youtube]\n\nPhim được quay vào một buổi trưa hè tháng 7, khi mọi thứ dường như ngưng đọng. Không lời thoại, chỉ có tiếng ve và tiếng quạt trần quay đều."
+                id: "phuc-sinh",
+                title: "Phục Sinh (Resurrection)",
+                thumbnail: "assets/films/phuc-sinh/still/phuc-sinh-still-4.jpeg", 
+                genre: "Phim ngắn",
+                year: "2022",
+                duration: "", // Không hiển thị theo yêu cầu
+                youtubeId: "w9I_AQBpKps",
+                // Dữ liệu mới: Poster & Still
+                poster: "assets/films/phuc-sinh/phuc-sinh-poster.jpeg",
+                stills: Array.from({length: 13}, (_, i) => `assets/films/phuc-sinh/still/phuc-sinh-still-${i+1}.jpeg`),
+                
+                crew: `
+                    <li><b>Đạo diễn / Kịch bản / Dựng phim:</b> Đức Đoàn</li>
+                    <li><b>Diễn viên:</b> Ngô Nhật Trường, Phát Triển, Phan Nhật Khoa, Trầm Hương</li>
+                    <li><b>Quay phim:</b> Lê Văn Hoàng</li>
+                    <li><b>Sản xuất:</b> Đoàn Tôn Vân Anh, Phương Hương Giang</li>
+                    <li><b>Âm thanh:</b> Đại Việt</li>
+                    <li><b>Âm nhạc:</b> Đoàn Tuấn Đức, Nguyễn Thảo, Lê Như Ngọc Mai</li>
+                    <li><b>Đơn vị sản xuất:</b> Enlightenment Pictures</li>
+                `,
+                bts: Array.from({length: 5}, (_, i) => `assets/films/phuc-sinh/BTS/phuc-sinh-BTS-${i+1}.jpeg`)
             },
             {
-                title: "Người làm vườn",
-                date: "2024",
-                excerpt: "Tài liệu ngắn về bác nông dân già và khu vườn bí mật.",
-                content: "Câu chuyện về sự kiên nhẫn và tình yêu với đất đai. Mỗi cái cây là một người bạn, mỗi chiếc lá rụng là một bài học về sự vô thường."
+                id: "hai-chu-chau",
+                title: "Hai Chú Cháu",
+                thumbnail: "https://img.youtube.com/vi/AcXZ9b-ye9w/maxresdefault.jpg",
+                genre: "Phim ngắn",
+                year: "2016",
+                duration: "05:32",
+                youtubeId: "AcXZ9b-ye9w",
+                crew: `
+                    <li><b>Chuyển thể từ truyện ngắn của:</b> Hữu Thắng</li>
+                    <li><b>Đạo diễn / Quay phim / Dựng phim:</b> Nguyễn Đình Quý Anh</li>
+                    <li><b>Diễn viên:</b> Ngô Nhật Trường, Trần Hoàng Phi, Hạnh Phúc, Nguyễn Huỳnh Long, Lê Nhã, Thanh Trúc, Trương Ngọc Quốc Dũng</li>
+                    <li><b>Sản xuất:</b> Huỳnh Ngọc Việt Triều</li>
+                    <li><b>Trợ lý đạo diễn:</b> Trương Ngọc Quốc Dũng</li>
+                    <li><b>Thư ký / Phục trang:</b> Lê Nhã</li>
+                    <li><b>Âm thanh:</b> Trần Quang Huyền</li>
+                `,
+                bts: Array.from({length: 12}, (_, i) => `assets/films/hai-chu-chau/BTS/hai-chu-chau-BTS-${i+1}.jpeg`)
             }
         ]
     },
     "en": {
         title: "films",
-        description: "Short films, stories told by light and shadow.",
+        layout: "grid",
+        description: "Stories told by light.",
         items: [
             {
-                title: "Midday Dream",
-                date: "2025",
-                excerpt: "A short film about the silence of the city at noon.",
-                content: "Film Link: [Vimeo/Youtube]\n\nFilmed on a summer noon in July, when everything seems to stand still. No dialogue, just the sound of cicadas and the ceiling fan spinning evenly."
+                id: "phuc-sinh",
+                title: "Resurrection",
+                thumbnail: "assets/films/phuc-sinh/still/phuc-sinh-still-4.jpeg",
+                genre: "Short Film",
+                year: "2022",
+                duration: "",
+                youtubeId: "w9I_AQBpKps",
+                poster: "assets/films/phuc-sinh/phuc-sinh-poster.jpeg",
+                stills: Array.from({length: 13}, (_, i) => `assets/films/phuc-sinh/still/phuc-sinh-still-${i+1}.jpeg`),
+                
+                crew: `
+                    <li><b>Director / Screenplay / Editor:</b> Đức Đoàn</li>
+                    <li><b>Cast:</b> Ngô Nhật Trường, Phát Triển, Phan Nhật Khoa, Trầm Hương</li>
+                    <li><b>Photography:</b> Lê Văn Hoàng</li>
+                    <li><b>Producer:</b> Đoàn Tôn Vân Anh, Phương Hương Giang</li>
+                    <li><b>Sound:</b> Đại Việt</li>
+                    <li><b>Music:</b> Đoàn Tuấn Đức, Nguyễn Thảo, Lê Như Ngọc Mai</li>
+                    <li><b>Production:</b> Enlightenment Pictures</li>
+                `,
+                bts: Array.from({length: 5}, (_, i) => `assets/films/phuc-sinh/BTS/phuc-sinh-BTS-${i+1}.jpeg`)
             },
+            
+            
+            
+            
+            
             {
-                title: "The Gardener",
-                date: "2024",
-                excerpt: "A short documentary about an old farmer and his secret garden.",
-                content: "A story about patience and love for the land. Every tree is a friend, every falling leaf is a lesson in impermanence."
+                id: "hai-chu-chau",
+                title: "Hai Chú Cháu",
+                thumbnail: src="assets/films/hai-chu-chau/BTS/hai-chu-chau-BTS-5.jpeg", // Lấy ảnh thumb từ Youtube
+                genre: "Phim ngắn",
+                year: "2016",
+                duration: "05:32",
+                youtubeId: "AcXZ9b-ye9w",
+                crew: `
+                    <li><b>Chuyển thể từ truyện ngắn của</b> Hữu Thắng</li>
+                    <li><b>Đạo diễn / Quay phim / Dựng phim:</b> Nguyễn Đình Quý Anh</li>
+                    <li><b>Diễn viên:</b> Ngô Nhật Trường, Trần Hoàng Phi, Hạnh Phúc, Nguyễn Huỳnh Long, Lê Nhã, Thanh Trúc, Trương Ngọc Quốc Dũng</li>
+                    <li><b>Sản xuất:</b> Huỳnh Ngọc Việt Triều</li>
+                    <li><b>Trợ lý đạo diễn:</b> Trương Ngọc Quốc Dũng</li>
+                    <li><b>Thư ký / Phục trang:</b> Lê Nhã</li>
+                    <li><b>Âm thanh:</b> Trần Quang Huyền</li>
+                `,
+                // Tạo mảng 12 ảnh BTS tự động
+                bts: Array.from({length: 12}, (_, i) => `assets/films/hai-chu-chau/BTS/hai-chu-chau-BTS-${i+1}.jpeg`)
+            }
+        ]
+    },
+    "en": {
+        title: "films",
+        layout: "grid",
+        description: "Stories told by light.",
+        items: [
+            {
+                id: "hai-chu-chau",
+                title: "Uncle & Son", // Tạm dịch hoặc để nguyên tiếng Việt nếu muốn
+                thumbnail: src="assets/films/hai-chu-chau/BTS/hai-chu-chau-BTS-5.jpeg",
+                genre: "Short Film",
+                year: "2016",
+                duration: "05:32",
+                youtubeId: "AcXZ9b-ye9w",
+                crew: `
+                    <li><b>Based on the short story of</b> Hữu Thắng</li>
+                    <li><b>Director / Cinematographer / Editor:</b> Nguyễn Đình Quý Anh</li>
+                    <li><b>Cast:</b> Ngô Nhật Trường, Trần Hoàng Phi, Hạnh Phúc, Nguyễn Huỳnh Long, Lê Nhã, Thanh Trúc, Trương Ngọc Quốc Dũng</li>
+                    <li><b>Producer:</b> Huỳnh Ngọc Việt Triều</li>
+                    <li><b>Assistant Director:</b> Trương Ngọc Quốc Dũng</li>
+                    <li><b>Secretary / Wardrobe:</b> Lê Nhã</li>
+                    <li><b>Sound:</b> Trần Quang Huyền</li>
+                `,
+                bts: Array.from({length: 12}, (_, i) => `assets/films/hai-chu-chau/BTS/hai-chu-chau-BTS-${i+1}.jpeg`)
             }
         ]
     },
     "fr": {
         title: "films",
-        description: "Courts métrages, histoires racontées par l'ombre et la lumière.",
+        layout: "grid",
+        description: "Histoires racontées par la lumière.",
         items: [
             {
-                title: "Rêve de midi",
-                date: "2025",
-                excerpt: "Un court métrage sur le silence de la ville à midi.",
-                content: "Lien du film : [Vimeo/Youtube]\n\nFilm tourné un midi d'été en juillet, quand tout semble s'arrêter. Pas de dialogue, juste le bruit des cigales et du ventilateur de plafond qui tourne régulièrement."
-            },
-            {
-                title: "Le Jardinier",
-                date: "2024",
-                excerpt: "Un court documentaire sur un vieux fermier et son jardin secret.",
-                content: "Une histoire de patience et d'amour pour la terre. Chaque arbre est un ami, chaque feuille qui tombe est une leçon sur l'impermanence."
+                id: "hai-chu-chau",
+                title: "Oncles et Neveux",
+                thumbnail: src="assets/films/hai-chu-chau/BTS/hai-chu-chau-BTS-5.jpeg",
+                genre: "Court Métrage",
+                year: "2016",
+                duration: "05:32",
+                youtubeId: "AcXZ9b-ye9w",
+                crew: `
+                    <li><b>Basé sur la nouvelle de</b> Hữu Thắng</li>
+                    <li><b>Réalisateur / Directeur Photo / Monteur:</b> Nguyễn Đình Quý Anh</li>
+                    <li><b>Distribution:</b> Ngô Nhật Trường, Trần Hoàng Phi, Hạnh Phúc, Nguyễn Huỳnh Long, Lê Nhã, Thanh Trúc, Trương Ngọc Quốc Dũng</li>
+                    <li><b>Producteur:</b> Huỳnh Ngọc Việt Triều</li>
+                    <li><b>Assistant Réalisateur:</b> Trương Ngọc Quốc Dũng</li>
+                    <li><b>Secrétaire / Costumes:</b> Lê Nhã</li>
+                    <li><b>Son:</b> Trần Quang Huyền</li>
+                `,
+                bts: Array.from({length: 12}, (_, i) => `assets/films/hai-chu-chau/BTS/hai-chu-chau-BTS-${i+1}.jpeg`)
             }
         ]
     }
 };
-console.log("Đã nạp module: Phim (Đa ngôn ngữ)");
+console.log("Đã nạp module: Phim (Grid Version)");

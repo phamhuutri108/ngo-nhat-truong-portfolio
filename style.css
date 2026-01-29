@@ -113,7 +113,7 @@ body {
 .dynamic-content h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-    text-transform: lowercase;
+    text-transform: capitalize;
 }
 
 .dynamic-desc {
@@ -441,4 +441,312 @@ h1, h2, h3, h4, h5, p, .quote, .tagline {
 /* Khi rê chuột vào thì chuyển màu xanh hoàng gia */
 .contact-link:hover {
     color: #3973f5; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- GIAO DIỆN LƯỚI PHIM (FILM GRID) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Tự động chia cột */
+    gap: 40px 20px; /* Khoảng cách hàng/cột */
+    margin-top: 30px;
+}
+
+.gallery-item {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover {
+    opacity: 0.8;
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 16/9; /* Tỉ lệ chuẩn video */
+    object-fit: cover;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    filter: grayscale(100%); /* Ảnh trắng đen */
+    transition: filter 0.3s;
+}
+
+.gallery-item:hover img {
+    filter: grayscale(0%); /* Rê chuột vào thì lên màu */
+}
+
+.gallery-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #000;
+    margin-top: 5px;
+}
+
+/* --- TRANG CHI TIẾT PHIM (FILM DETAIL) --- */
+.film-detail-view {
+    animation: fadeIn 0.5s ease;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #999;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+.btn-back:hover {
+    color: #3973f5;
+    border-color: #3973f5;
+}
+
+.film-meta {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
+    height: 0;
+    margin-bottom: 40px;
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.crew-section {
+    margin-bottom: 50px;
+    margin-top: 60px;
+}
+
+.crew-section h3, .bts-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.crew-list {
+    list-style: none;
+    font-size: 14px;
+    line-height: 2;
+    color: #333;
+}
+
+.crew-list strong {
+    font-weight: 600;
+    color: #000;
+}
+
+/* Lưới ảnh BTS */
+.bts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột */
+    gap: 10px;
+}
+
+.bts-grid img {
+    width: 100%;
+    height: 150px; /* Chiều cao cố định cho đều */
+    object-fit: cover;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.15s ease !important;
+}
+
+.bts-grid img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .bts-grid {
+        grid-template-columns: repeat(2, 1fr); /* Mobile: 2 cột */
+    }
+}
+
+
+
+
+/* --- CẬP NHẬT CHI TIẾT PHIM (GRID VIEW UPDATE) --- */
+
+/* 1. Nút Quay lại (Chỉ mũi tên) */
+.btn-back {
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 28px; /* Mũi tên to rõ */
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    line-height: 1;
+    border: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-back:hover {
+    transform: translateX(-5px); /* Hiệu ứng lùi nhẹ khi rê chuột */
+    color: #3973f5;
+}
+
+/* 2. Thông tin phim (Xuống dòng từng mục) */
+.film-meta {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.meta-line {
+    display: block; /* Bắt buộc xuống dòng */
+    margin-bottom: 8px; /* Khoảng cách giữa các dòng */
+    font-size: 14px;
+}
+
+.meta-line strong {
+    font-weight: 600;
+    margin-right: 5px;
+    color: #000;
+    display: inline-block;
+    width: 70px; /* Canh thẳng hàng các tiêu đề (Genre, Year...) */
+}
+
+/* 3. Video Youtube (Thu nhỏ kích thước) */
+.video-wrapper-limit {
+    /* Thu nhỏ lại: Chiếm 70% chiều rộng (giảm khoảng 1/3 so với full màn hình) */
+    width: 70%; 
+    margin-bottom: 40px;
+    
+    /* Nếu muốn canh giữa video thì dùng: margin: 0 auto 40px auto; */
+    /* Hiện tại mình để mặc định canh trái theo style của web */
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỉ lệ 16:9 chuẩn */
+    height: 0;
+    background: #000;
+    border-radius: 2px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Mobile: Trả về full màn hình cho dễ xem */
+@media (max-width: 768px) {
+    .video-wrapper-limit {
+        width: 100%; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- LIGHTBOX (XEM ẢNH POPUP) --- */
+.lightbox {
+    display: none; /* Mặc định ẩn */
+    position: fixed;
+    z-index: 10000; /* Nổi lên trên cùng */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9); /* Nền đen mờ */
+    
+    /* Căn giữa ảnh */
+    display: none; /* Sẽ được JS đổi thành Flex */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out; /* Con trỏ biểu thị bấm để đóng */
+}
+
+.lightbox-content {
+    display: block;
+    margin: auto;
+    
+    max-width: 65vw;
+    max-height: 65vh;
+    
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    background: #fff; /* Nền trắng có sẵn */
+
+    /* --- THÊM DÒNG NÀY VÀO ĐÂY --- */
+    border: 3px solid #ffffff; /* Tạo viền trắng dày 8px xung quanh ảnh */
+
+    /* Các hiệu ứng animation cũ nếu có... */
+    /* animation: quickZoom ... */
+}
+
+/* --- CẬP NHẬT NÚT ĐÓNG LIGHTBOX (TO HƠN) --- */
+.close-lightbox {
+    position: absolute;
+    top: 15px;        /* Cách mép trên */
+    right: 35px;      /* Cách mép phải */
+    
+    color: #ffffff;
+    font-size: 60px;  /* Tăng từ 40px lên 60px cho to rõ */
+    font-weight: 300; /* Mỏng lại một chút cho tinh tế nhưng vẫn to */
+    line-height: 1;   
+    
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 10001;   /* Đảm bảo luôn nằm trên ảnh */
+    
+    /* Thêm bóng đổ nhẹ để dễ nhìn nếu ảnh nền màu trắng */
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.close-lightbox:hover {
+    color: #3973f5;       /* Đổi màu xanh khi rê chuột vào */
+    transform: scale(1.2) rotate(90deg); /* Xoay nhẹ và phóng to khi rê chuột */
+}
+
+/* --- ĐIỆN THOẠI --- */
+@media (max-width: 768px) {
+    .close-lightbox {
+        top: 20px;
+        right: 20px;
+        font-size: 50px; /* Tăng từ 30px lên 50px cho điện thoại */
+        font-weight: 400;
+    }
 }

@@ -1,13 +1,12 @@
 const aboutData = {
     "vi": {
         title: "về tôi",
-        // Đã xóa description
         items: [
             {
-                title: "", // Đã xóa chữ "Tiểu sử"
+                title: "", 
                 date: "",
                 excerpt: "",
-                content: "Xin chào, tôi là Ngô Nhật Trường. Sinh ra và lớn lên tại Sài Gòn. \n\nHện tại, ngoài công việc chính liên quan tới chuyên môn Bác sỹ Thú y thì tôi cũng đeo đuổi thực hành nghệ thuật, văn chương, âm nhạc và kiến tạo không gian trong suốt 13 năm qua."
+                content: "Xin chào, tôi là Ngô Nhật Trường. Sinh ra và lớn lên tại Sài Gòn. \n\nHiện tại, ngoài công việc chính liên quan tới chuyên môn Bác sỹ Thú y thì tôi cũng đeo đuổi thực hành nghệ thuật, văn chương, âm nhạc và kiến tạo không gian trong suốt 13 năm qua."
             },
             {
                 title: "Học vấn",
@@ -18,8 +17,9 @@ const aboutData = {
             {
                 title: "Tuyên ngôn",
                 date: "",
-                excerpt: "Il faut cultiver notre jardin.",
-                content: "« Il faut cultiver notre jardin » (Chúng ta phải chăm sóc, vun trồng khu vườn của mình)\n_ Voltaire_\n\n« There are always flowers for those who want to see them » (Những bông hoa luôn có mặt cho ai muốn nhìn thấy chúng)\n_Henri Matisse_\n\nTôi là một người làm vườn chăm chỉ cày xới mảnh đất bên trong mình để những hạt giống có thể nảy mầm, cây cối lớn lên và những bông hoa có thể hiển lộ. Và tôi biết những khu vườn khác cũng đầy hoa đẹp thật phong phú.\n\nSự công nhận, động viên và tán thưởng của người khác là một khích lệ vô cùng ý nghĩa với tôi. Nhưng động cơ của tất cả những điều tôi đang mải mê làm là vì tôi thật sự yêu thích chúng."
+                excerpt: "",
+                // Đã thêm thẻ <b><i> cho 2 câu quote
+                content: "<b><i>« Il faut cultiver notre jardin » (Chúng ta phải chăm sóc, vun trồng khu vườn của mình)</i></b>\n_ Voltaire_\n\n<b><i>« There are always flowers for those who want to see them » (Những bông hoa luôn có mặt cho ai muốn nhìn thấy chúng)</i></b>\n_Henri Matisse_\n\nTôi là một người làm vườn chăm chỉ cày xới mảnh đất bên trong mình để những hạt giống có thể nảy mầm, cây cối lớn lên và những bông hoa có thể hiển lộ. Và tôi biết những khu vườn khác cũng đầy hoa đẹp thật phong phú.\n\nSự công nhận, động viên và tán thưởng của người khác là một khích lệ vô cùng ý nghĩa với tôi. Nhưng động cơ của tất cả những điều tôi đang mải mê làm là vì tôi thật sự yêu thích chúng."
             }
         ]
     },
@@ -27,7 +27,7 @@ const aboutData = {
         title: "about",
         items: [
             {
-                title: "", // Removed "Biography"
+                title: "", 
                 date: "",
                 excerpt: "",
                 content: "Hello, I am Ngo Nhat Truong. Born and raised in Saigon. \n\nCurrently, besides my main profession as a Veterinarian, I have also been pursuing art, literature, music, and space creation for the past 13 years."
@@ -42,7 +42,7 @@ const aboutData = {
                 title: "Artist Statement",
                 date: "",
                 excerpt: "",
-                content: "« Il faut cultiver notre jardin » (We must cultivate our garden)\n_ Voltaire_\n\n« There are always flowers for those who want to see them »\n_Henri Matisse_\n\nI am a diligent gardener plowing the soil within myself so that seeds can germinate, trees can grow, and flowers can reveal themselves. And I know that other gardens are also full of beautiful, rich flowers.\n\nRecognition, encouragement, and applause from others are incredibly meaningful incentives to me. But the motive for all the things I am passionately doing is simply because I truly love them."
+                content: "<b><i>« Il faut cultiver notre jardin » (We must cultivate our garden)</i></b>\n_ Voltaire_\n\n<b><i>« There are always flowers for those who want to see them »</i></b>\n_Henri Matisse_\n\nI am a diligent gardener plowing the soil within myself so that seeds can germinate, trees can grow, and flowers can reveal themselves. And I know that other gardens are also full of beautiful, rich flowers.\n\nRecognition, encouragement, and applause from others are incredibly meaningful incentives to me. But the motive for all the things I am passionately doing is simply because I truly love them."
             }
         ]
     },
@@ -50,7 +50,7 @@ const aboutData = {
         title: "à propos",
         items: [
             {
-                title: "", // Removed "Biographie"
+                title: "", 
                 date: "",
                 excerpt: "",
                 content: "Bonjour, je suis Ngo Nhat Truong. Né et élevé à Saigon. \n\nActuellement, en plus de mon métier principal de vétérinaire, je poursuis également une pratique artistique, littéraire, musicale et la création d'espaces depuis 13 ans."
@@ -65,7 +65,7 @@ const aboutData = {
                 title: "Artist Statement",
                 date: "",
                 excerpt: "",
-                content: "« Il faut cultiver notre jardin »\n_ Voltaire_\n\n« Il y a toujours des fleurs pour ceux qui veulent les voir »\n_Henri Matisse_\n\nJe suis un jardinier diligent qui laboure la terre en moi pour que les graines puissent germer, les arbres grandir et les fleurs se révéler. Et je sais que d'autres jardins sont aussi remplis de belles fleurs riches.\n\nLa reconnaissance, les encouragements et les applaudissements des autres sont pour moi des incitations extrêmement significatives. Mais la motivation de tout ce que je fais passionnément est simplement que je les aime vraiment."
+                content: "<b><i>« Il faut cultiver notre jardin »</i></b>\n_ Voltaire_\n\n<b><i>« Il y a toujours des fleurs pour ceux qui veulent les voir »</i></b>\n_Henri Matisse_\n\nJe suis un jardinier diligent qui laboure la terre en moi pour que les graines puissent germer, les arbres grandir et les fleurs se révéler. Et je sais que d'autres jardins sont aussi remplis de belles fleurs riches.\n\nLa reconnaissance, les encouragements et les applaudissements des autres sont pour moi des incitations extrêmement significatives. Mais la motivation de tout ce que je fais passionnément est simplement que je les aime vraiment."
             }
         ]
     }
