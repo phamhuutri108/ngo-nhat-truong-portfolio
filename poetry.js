@@ -1,11 +1,10 @@
-// scripts/poets.js
+// scripts/poetry.js
 
 /**
- * Cấu trúc dữ liệu Thơ (Poets Data)
- * Để thêm bài mới, bạn chỉ cần thêm một đối tượng {} vào trong mảng items.
+ * Cấu trúc dữ liệu Thơ (Poetry Data)
  */
-const poetsData = {
-    title: "Thơ",
+const poetryData = {
+    title: "thơ",
     description: "Những vần thơ nhỏ ghi lại rung động của lòng.",
     items: [
         {
@@ -32,14 +31,11 @@ const poetsData = {
                 Một niềm vui nho nhỏ.
             `
         }
-        // Sau này muốn thêm bài mới, bạn chỉ cần copy đoạn { ... } ở trên và dán vào đây.
     ]
 };
 
-// Hàm này dùng để hiển thị dữ liệu ra ngoài web (Vỏ trống)
-function renderPoets() {
-    console.log("Đang nạp danh sách thơ gồm " + poetsData.items.length + " bài.");
+function renderPoetry() {
+    console.log("Đã nạp danh sách thơ (poetry): " + poetryData.items.length + " bài.");
 }
 
-renderPoets();
-console.log("Đã nạp module: Thơ");
+renderPoetry();

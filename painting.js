@@ -1,6 +1,6 @@
 // scripts/paintings.js
 const paintingsData = {
-    title: "Tranh",
+    title: "tranh",
     description: "Sắc màu và cảm xúc trên giấy.",
     items: []
 };

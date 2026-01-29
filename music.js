@@ -1,6 +1,6 @@
 // scripts/music.js
 const musicData = {
-    title: "Âm nhạc",
+    title: "nhạc",
     description: "Giai điệu của sự tĩnh lặng.",
     items: []
 };
