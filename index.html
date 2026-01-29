@@ -108,12 +108,34 @@
     
     
     <script>
-        // BIẾN TOÀN CỤC
+        // --- 1. KHỞI TẠO BIẾN TOÀN CỤC ---
         let currentLang = 'vi';
         let currentSectionId = 'home'; 
+        let currentFilmIndex = -1; // Biến nhớ: Đang xem phim số mấy (-1 là chưa xem)
 
-        // --- A. XỬ LÝ MÀN HÌNH CHÀO ---
+        // --- 2. CẤU HÌNH DỮ LIỆU (DATA MAPPING) ---
+        // Hàm lấy dữ liệu an toàn, tránh lỗi nếu file .js chưa tải
+        function getSectionData(id) {
+            try {
+                if (id === 'about') return (typeof aboutData !== 'undefined') ? aboutData : null;
+                if (id === 'films') return (typeof filmsData !== 'undefined') ? filmsData : null;
+                if (id === 'music') return (typeof musicData !== 'undefined') ? musicData : null;
+                if (id === 'paintings') return (typeof paintingsData !== 'undefined') ? paintingsData : null;
+                if (id === 'poets') return (typeof poetryData !== 'undefined') ? poetryData : null;
+                if (id === 'artwork') return (typeof artworkData !== 'undefined') ? artworkData : null;
+                if (id === 'space') return (typeof spacesData !== 'undefined') ? spacesData : null;
+                if (id === 'blog') return (typeof blogData !== 'undefined') ? blogData : null;
+                if (id === 'contact') return (typeof contactData !== 'undefined') ? contactData : null;
+            } catch (e) {
+                console.error("Lỗi lấy dữ liệu:", e);
+                return null;
+            }
+            return null;
+        }
+
+        // --- 3. KHỞI CHẠY KHI WEB TẢI XONG ---
         document.addEventListener('DOMContentLoaded', () => {
+            // Xử lý màn hình chào
             const introScreen = document.getElementById('intro-screen');
             if (introScreen) {
                 introScreen.addEventListener('click', function() {
@@ -121,11 +143,12 @@
                     setTimeout(() => { this.remove(); }, 1000); 
                 });
             }
+            // Khởi tạo ngôn ngữ và menu
             switchLanguage(currentLang);
             highlightMenu('home'); 
         });
 
-        // --- B. SLIDER ---
+        // --- 4. SLIDER (Trang chủ) ---
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
 
@@ -138,11 +161,10 @@
             slides[currentSlide].classList.add('active');
         }
 
-        // --- C. DỊCH THUẬT & MENU (Đã cập nhật thứ tự mới) ---
+        // --- 5. DỊCH THUẬT & MENU ---
         const uiTranslations = {
             'vi': {
                 tagline: "người làm phim, làm vườn, viết và sắp đặt không gian.",
-                // Thứ tự: Home, About, Films, Music, Paintings, Poetry, Artwork, Spaces, Blog, Contact
                 menu: ["trang chủ", "về tôi", "phim", "nhạc", "tranh", "thơ", "artwork", "không gian", "blog", "liên hệ"],
                 footer: "© 2026 ngô nhật trường — lưu giữ từng hơi thở",
                 homeWelcome: "Chào mừng bạn đến với góc nhỏ của Trường. Nơi lưu giữ những lát cắt của cuộc sống qua ống kính, nét vẽ và những khoảng lặng trong không gian sống."
@@ -167,51 +189,39 @@
             // Đổi màu nút ngôn ngữ
             document.querySelectorAll('.lang-opt').forEach(btn => {
                 btn.classList.remove('active');
-                if(btn.getAttribute('onclick').includes(`'${lang}'`)) {
+                if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${lang}'`)) {
                     btn.classList.add('active');
                 }
             });
 
             // Dịch nội dung tĩnh
             const content = uiTranslations[lang];
-            if (!content) return;
+            if (content) {
+                const taglineEl = document.querySelector('.tagline');
+                const footerEl = document.querySelector('.footer p');
+                const homeIntroEl = document.querySelector('.intro-text p');
 
-            const taglineEl = document.querySelector('.tagline');
-            const footerEl = document.querySelector('.footer p');
-            const homeIntroEl = document.querySelector('.intro-text p');
+                if(taglineEl) taglineEl.textContent = content.tagline;
+                if(footerEl) footerEl.textContent = content.footer;
+                if(homeIntroEl) homeIntroEl.textContent = content.homeWelcome;
 
-            if(taglineEl) taglineEl.textContent = content.tagline;
-            if(footerEl) footerEl.textContent = content.footer;
-            if(homeIntroEl) homeIntroEl.textContent = content.homeWelcome;
+                // Dịch Menu
+                const menuItems = document.querySelectorAll('.navigation a');
+                menuItems.forEach((item, index) => {
+                    if(content.menu[index]) {
+                        item.textContent = content.menu[index];
+                    }
+                });
+            }
 
-            // Dịch Menu
-            const menuItems = document.querySelectorAll('.navigation a');
-            menuItems.forEach((item, index) => {
-                if(content.menu[index]) {
-                    item.textContent = content.menu[index];
-                }
-            });
-
-            // Reload nội dung động
-            if (currentSectionId !== 'home' && dataMapping[currentSectionId]) {
-                renderDynamicPage(dataMapping[currentSectionId]);
+            // Reload nội dung động (QUAN TRỌNG: Giữ lại trang đang xem)
+            if (currentSectionId !== 'home') {
+                const data = getSectionData(currentSectionId);
+                if (data) renderDynamicPage(data);
             }
         }
 
-        // --- D. DATA MAPPING (Đã thêm Artwork & Blog) ---
-        const dataMapping = {
-            'about': (typeof aboutData !== 'undefined') ? aboutData : null,
-            'films': (typeof filmsData !== 'undefined') ? filmsData : null,
-            'music': (typeof musicData !== 'undefined') ? musicData : null,
-            'paintings': (typeof paintingsData !== 'undefined') ? paintingsData : null,
-            'poets': (typeof poetryData !== 'undefined') ? poetryData : null,
-            'artwork': (typeof artworkData !== 'undefined') ? artworkData : null, // Mới
-            'space': (typeof spacesData !== 'undefined') ? spacesData : null,
-            'blog': (typeof blogData !== 'undefined') ? blogData : null,          // Mới
-            'contact': (typeof contactData !== 'undefined') ? contactData : null
-        };
-
-        // --- E. LOGIC CHUYỂN TRANG ---
+        // --- 6. LOGIC CHUYỂN TRANG (NAVIGATION) ---
         const navLinks = document.querySelectorAll('.navigation a');
         const sections = document.querySelectorAll('.section');
         const dynamicDisplay = document.getElementById('dynamic-display');
@@ -220,6 +230,12 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault(); 
                 const targetId = this.getAttribute('href').substring(1);
+                
+                // Nếu người dùng bấm sang mục khác, hoặc bấm lại vào nút "Phim" -> Reset về lưới
+                if (currentSectionId !== targetId || targetId === 'films') {
+                    currentFilmIndex = -1; // Reset trạng thái xem phim
+                }
+                
                 currentSectionId = targetId;
                 switchSection(targetId);
             });
@@ -248,22 +264,25 @@
 
             if (staticSection) {
                 staticSection.classList.add('section-active');
-            } else if (dataMapping[targetId]) {
-                renderDynamicPage(dataMapping[targetId]);
-                if (dynamicDisplay) {
-                    dynamicDisplay.classList.add('section', 'section-active');
+            } else {
+                const data = getSectionData(targetId);
+                if (data) {
+                    renderDynamicPage(data);
+                    if (dynamicDisplay) {
+                        dynamicDisplay.classList.add('section', 'section-active');
+                    }
                 }
             }
         }
 
-        // --- HÀM RENDER NỘI DUNG (HỖ TRỢ CẢ BLOG VÀ PHIM) ---
+        // --- 7. HÀM RENDER NỘI DUNG (CỐT LÕI) ---
         function renderDynamicPage(fullData) {
             if (!fullData || !dynamicDisplay) return;
 
             const data = fullData[currentLang]; 
             if (!data) return; 
 
-            // TRƯỜNG HỢP 1: NẾU LÀ DẠNG LƯỚI (Dùng cho trang Phim)
+            // TRƯỜNG HỢP A: DẠNG LƯỚI (PHIM)
             if (data.layout === 'grid') {
                 let html = `
                     <div class="dynamic-content fade-in">
@@ -273,24 +292,37 @@
                         <div id="grid-view" class="gallery-grid">
                 `;
                 
-                // Tạo các thẻ thumbnail phim
-                data.items.forEach((item, index) => {
-                    html += `
-                        <div class="gallery-item" onclick="openFilmDetail(${index})">
-                            <img src="${item.thumbnail}" alt="${item.title}">
-                            <div class="gallery-title">${item.title}</div>
-                        </div>
-                    `;
-                });
+                if (data.items) {
+                    data.items.forEach((item, index) => {
+                        html += `
+                            <div class="gallery-item" onclick="openFilmDetail(${index})">
+                                <img src="${item.thumbnail}" alt="${item.title}">
+                                <div class="gallery-title">${item.title}</div>
+                            </div>
+                        `;
+                    });
+                }
 
                 html += `</div> <div id="detail-view"></div> </div>`;
                 dynamicDisplay.innerHTML = html;
                 
-                // Lưu dữ liệu phim hiện tại để dùng cho hàm mở chi tiết
+                // Cập nhật dữ liệu phim hiện tại vào biến window để dùng chung
                 window.currentFilmData = data.items;
+
+                // --- TÍNH NĂNG GIỮ TRẠNG THÁI ---
+                // Nếu đang xem dở phim (currentFilmIndex != -1) -> Tự động mở lại phim đó
+                if (currentFilmIndex !== -1) {
+                    // Kiểm tra xem phim đó có tồn tại ở ngôn ngữ mới không (tránh lỗi array out of bounds)
+                    if (window.currentFilmData && window.currentFilmData[currentFilmIndex]) {
+                        // Mở lại phim (tham số false để không cuộn lên đầu trang)
+                        openFilmDetail(currentFilmIndex, false); 
+                    } else {
+                        currentFilmIndex = -1; // Nếu không tìm thấy thì reset
+                    }
+                }
             } 
             
-            // TRƯỜNG HỢP 2: DẠNG DANH SÁCH THƯỜNG (Dùng cho Blog, Painting, Về tôi...)
+            // TRƯỜNG HỢP B: DẠNG DANH SÁCH THƯỜNG (About, Blog...)
             else {
                 let descriptionHTML = data.description 
                     ? `<p class="dynamic-desc">${data.description}</p>` 
@@ -332,25 +364,28 @@
             }
         }
 
-        // --- HÀM MỞ CHI TIẾT PHIM (FULL TÍNH NĂNG) ---
-        function openFilmDetail(index) {
+        // --- 8. HÀM MỞ CHI TIẾT PHIM (QUAN TRỌNG) ---
+        function openFilmDetail(index, doScroll = true) {
+            if (!window.currentFilmData || !window.currentFilmData[index]) return;
+
+            // 1. Lưu lại vị trí phim đang xem
+            currentFilmIndex = index;
+            
             const film = window.currentFilmData[index];
             const gridView = document.getElementById('grid-view');
             const detailView = document.getElementById('detail-view');
             
-            gridView.style.display = 'none'; // Ẩn lưới
+            // 2. Ẩn lưới, hiện chi tiết
+            if(gridView) gridView.style.display = 'none'; 
             
-            // 1. Xử lý Poster (Nếu có)
+            // 3. Xử lý các phần tử con (Poster, Stills, BTS...)
             let posterHTML = '';
             if (film.poster) {
-                posterHTML = `
-                    <div style="text-align: center; margin-bottom: 40px; margin-top: 20px;">
+                posterHTML = `<div style="text-align: center; margin-bottom: 40px; margin-top: 20px;">
                         <img src="${film.poster}" style="max-width: 300px; width: 100%; height: auto; border-radius: 2px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" onclick="openLightbox(this.src)" class="zoomable">
-                    </div>
-                `;
+                    </div>`;
             }
 
-            // 2. Xử lý Stills (Nếu có)
             let stillsHTML = '';
             if (film.stills && film.stills.length > 0) {
                 stillsHTML = `<div class="bts-section"><h3>Still</h3><div class="bts-grid">`;
@@ -360,7 +395,6 @@
                 stillsHTML += `</div></div>`;
             }
 
-            // 3. Xử lý BTS (Nếu có)
             let btsHTML = '';
             if (film.bts && film.bts.length > 0) {
                 btsHTML = `<div class="bts-section"><h3>Behind The Scene</h3><div class="bts-grid">`;
@@ -370,9 +404,9 @@
                 btsHTML += `</div></div>`;
             }
 
-            // 4. Xử lý Duration
             let durationHTML = film.duration ? `<span class="meta-line"><strong>Duration:</strong> ${film.duration}</span>` : '';
 
+            // 4. Render HTML
             detailView.innerHTML = `
                 <div class="film-detail-view fade-in">
                     <a class="btn-back" onclick="closeFilmDetail()" href="javascript:void(0)">&#8592;</a>
@@ -405,32 +439,38 @@
                 </div>
             `;
             
-            // Gắn sự kiện Lightbox cho tất cả ảnh trong nội dung chi tiết
+            // 5. Gắn tính năng click xem ảnh phóng to
             const contentImages = detailView.querySelectorAll('img');
             contentImages.forEach(img => {
-                // Nếu chưa có onclick thì gán vào
                 if (!img.getAttribute('onclick')) {
                     img.setAttribute('onclick', 'openLightbox(this.src)');
                 }
                 img.style.cursor = 'zoom-in';
             });
             
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // 6. Cuộn lên đầu (Chỉ khi người dùng click, không cuộn khi đổi ngôn ngữ để đỡ chóng mặt)
+            if (doScroll) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
-        // --- HÀM ĐÓNG CHI TIẾT (QUAY VỀ LƯỚI) ---
+        // --- 9. HÀM ĐÓNG CHI TIẾT (QUAY VỀ LƯỚI) ---
         function closeFilmDetail() {
+            // QUAN TRỌNG: Reset biến nhớ để lần sau vào lại Phim sẽ thấy lưới
+            currentFilmIndex = -1;
+
             const gridView = document.getElementById('grid-view');
             const detailView = document.getElementById('detail-view');
 
-            if (detailView) detailView.innerHTML = ''; // Xóa nội dung để tắt video
+            if (detailView) detailView.innerHTML = ''; 
             if (gridView) {
-                gridView.style.display = 'grid'; // Hiện lại lưới
+                gridView.style.display = 'grid'; 
+                // Cuộn nhẹ lên đầu lưới phim
                 gridView.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        // --- CÁC HÀM LIGHTBOX (XEM ẢNH) ---
+        // --- 10. LIGHTBOX (XEM ẢNH) ---
         function openLightbox(src) {
             const lightbox = document.getElementById('img-lightbox');
             const lbImg = document.getElementById('lightbox-img');
@@ -460,6 +500,15 @@
         <span class="close-lightbox">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
     </div>
+
+
+
+
+
+
+
+
+
 
 
 
