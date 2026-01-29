@@ -1,57 +1,37 @@
 const contactData = {
     "vi": {
         title: "liên hệ",
-        description: "Mở lối cho những cuộc gặp gỡ mới.",
         items: [
             {
-                title: "Kết nối công việc",
+                title: "", 
                 date: "",
-                excerpt: "Hợp tác về Phim, Nhiếp ảnh & Thiết kế không gian.",
-                content: "Email: contact@ngonhattruong.com\nPhone: 0909 xxx xxx (Vui lòng để lại tin nhắn)"
-            },
-            {
-                title: "Mạng xã hội",
-                date: "",
-                excerpt: "Theo dõi hành trình của tôi.",
-                content: "Instagram: @ngonhattruong\nFacebook: /ngonhattruong.art\nBehance: behance.net/ngonhattruong"
+                excerpt: "",
+                // QUAN TRỌNG: Chỉ giữ lại class="contact-link", KHÔNG CÓ style="..."
+                content: `Phone: <a href="tel:+84949452277" class="contact-link">+84 (0) 949 452 277</a>\nEmail: <a href="mailto:kejazz1989@gmail.com" class="contact-link">kejazz1989@gmail.com</a>\nFacebook: <a href="https://www.facebook.com/kejazz1989" target="_blank" class="contact-link">Ngô Nhật Trường</a>`
             }
         ]
     },
     "en": {
         title: "contact",
-        description: "Opening paths for new encounters.",
         items: [
             {
-                title: "Work Connection",
+                title: "", 
                 date: "",
-                excerpt: "Collaboration in Film, Photography & Space Design.",
-                content: "Email: contact@ngonhattruong.com\nPhone: 0909 xxx xxx (Please leave a message)"
-            },
-            {
-                title: "Social Media",
-                date: "",
-                excerpt: "Follow my journey.",
-                content: "Instagram: @ngonhattruong\nFacebook: /ngonhattruong.art\nBehance: behance.net/ngonhattruong"
+                excerpt: "",
+                content: `Phone: <a href="tel:+84949452277" class="contact-link">+84 (0) 949 452 277</a>\nEmail: <a href="mailto:kejazz1989@gmail.com" class="contact-link">kejazz1989@gmail.com</a>\nFacebook: <a href="https://www.facebook.com/kejazz1989" target="_blank" class="contact-link">Ngô Nhật Trường</a>`
             }
         ]
     },
     "fr": {
         title: "contact",
-        description: "Ouvrir des voies à de nouvelles rencontres.",
         items: [
             {
-                title: "Connexion Professionnelle",
+                title: "", 
                 date: "",
-                excerpt: "Collaboration en Cinéma, Photographie & Design d'Espace.",
-                content: "Email : contact@ngonhattruong.com\nTéléphone : 0909 xxx xxx (Veuillez laisser un message)"
-            },
-            {
-                title: "Réseaux Sociaux",
-                date: "",
-                excerpt: "Suivez mon parcours.",
-                content: "Instagram: @ngonhattruong\nFacebook: /ngonhattruong.art\nBehance: behance.net/ngonhattruong"
+                excerpt: "",
+                content: `Téléphone: <a href="tel:+84949452277" class="contact-link">+84 (0) 949 452 277</a>\nEmail: <a href="mailto:kejazz1989@gmail.com" class="contact-link">kejazz1989@gmail.com</a>\nFacebook: <a href="https://www.facebook.com/kejazz1989" target="_blank" class="contact-link">Ngô Nhật Trường</a>`
             }
         ]
     }
 };
-console.log("Đã nạp module: Liên hệ (Đa ngôn ngữ)");
+console.log("Đã nạp module: Liên hệ");

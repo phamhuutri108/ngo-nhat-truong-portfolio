@@ -82,7 +82,7 @@ body {
 }
 
 .navigation a.nav-active {
-    color: blue !important; /* Bắt buộc màu xanh */
+    color: #3973f5 !important; /* Bắt buộc màu xanh */
     font-weight: 600;       /* Đậm hơn một chút để nổi bật */
 }
 
@@ -279,15 +279,22 @@ h1, h2, h3, h4, h5, p, .quote, .tagline {
 }
 
 #intro-screen img {
-    height: 40px; /* Kích thước intro (lớn hơn header một chút) */
+    height: 60px; 
     width: auto;
     
     filter: grayscale(100%);
     opacity: 0.6;
     transition: all 0.5s ease;
+    
+    /* Mẹo: Thêm padding trong suốt để vùng nhận diện rộng ra thêm 1 chút (khoảng 10px) 
+       giúp người dùng dễ rê trúng hơn, nhưng không bị loang ra cả màn hình */
+    padding: 10px; 
+    box-sizing: content-box; /* Đảm bảo ảnh gốc vẫn giữ nguyên 40px */
 }
 
-#intro-screen:hover img {
+/* SỬA QUAN TRỌNG: Đổi từ "#intro-screen:hover img" thành dòng dưới đây */
+/* Chỉ khi rê chuột vào chính BỨC ẢNH (img:hover) thì mới lên màu */
+#intro-screen img:hover {
     filter: grayscale(0%);
     opacity: 1;
 }
@@ -353,7 +360,7 @@ h1, h2, h3, h4, h5, p, .quote, .tagline {
 }
 
 .lang-opt.active {
-    color: blue;
+    color: #3973f5;
     font-weight: bold;
 }
 
@@ -410,4 +417,28 @@ h1, h2, h3, h4, h5, p, .quote, .tagline {
         justify-content: center;
         gap: 15px;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- CSS CHO CÁC LINK TRONG PHẦN LIÊN HỆ --- */
+.contact-link {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: inherit;        /* Màu mặc định theo văn bản (đen/xám) */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển màu mượt mà */
+    font-weight: 500;      /* Cho chữ đậm lên một chút cho dễ nhìn */
+}
+
+/* Khi rê chuột vào thì chuyển màu xanh hoàng gia */
+.contact-link:hover {
+    color: #3973f5; 
 }

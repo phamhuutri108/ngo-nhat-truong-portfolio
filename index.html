@@ -262,23 +262,36 @@
             const data = fullData[currentLang]; 
             if (!data) return; 
 
+            // Cập nhật logic: Kiểm tra nếu có description thì mới hiện, không thì thôi
+            let descriptionHTML = data.description 
+                ? `<p class="dynamic-desc">${data.description}</p>` 
+                : '';
+
             let htmlContent = `
                 <div class="dynamic-content fade-in">
                     <h2>${data.title}</h2>
-                    <p class="dynamic-desc">${data.description}</p>
+                    ${descriptionHTML}
                     <div class="items-list">
             `;
 
             if (data.items && data.items.length > 0) {
                 data.items.forEach(item => {
-                    htmlContent += `
-                        <div class="item-card">
+                    // Logic mới: Chỉ hiện khung tiêu đề nếu item đó CÓ title hoặc CÓ date
+                    // Giúp phần "Tiểu sử" (không có title) sẽ liền mạch, không bị trống
+                    let headerHTML = '';
+                    if (item.title || item.date) {
+                        headerHTML = `
                             <div class="item-header">
                                 <span class="item-title">${item.title || ''}</span>
                                 ${item.date ? `<span class="item-date"> — ${item.date}</span>` : ''}
-                            </div>
+                            </div>`;
+                    }
+
+                    htmlContent += `
+                        <div class="item-card">
+                            ${headerHTML}
                             <div class="item-body">
-                                ${item.excerpt ? `<p>${item.excerpt}</p>` : ''}
+                                ${item.excerpt ? `<p><strong>${item.excerpt}</strong></p>` : ''}
                                 ${item.content ? `<div style="white-space: pre-line; margin-top:10px;">${item.content}</div>` : ''}
                             </div>
                         </div>

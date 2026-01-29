@@ -1,55 +1,71 @@
 const aboutData = {
     "vi": {
-        title: "về nhật trường",
-        description: "Hành trình đi tìm vẻ đẹp trong sự tối giản.",
+        title: "về tôi",
+        // Đã xóa description
         items: [
             {
-                title: "Tiểu sử",
+                title: "", // Đã xóa chữ "Tiểu sử"
                 date: "",
-                excerpt: "Người kể chuyện bằng hình ảnh và không gian.",
-                content: "Sinh ra và lớn lên tại Sài Gòn, tôi tìm thấy niềm cảm hứng bất tận từ những điều bình dị nhất. \n\nTôi tin rằng nghệ thuật không cần phải ồn ào. Một bức ảnh tĩnh, một nhành cây khô hay một khoảng trống trong căn phòng đều có ngôn ngữ riêng của nó."
+                excerpt: "",
+                content: "Xin chào, tôi là Ngô Nhật Trường. Sinh ra và lớn lên tại Sài Gòn. \n\nHện tại, ngoài công việc chính liên quan tới chuyên môn Bác sỹ Thú y thì tôi cũng đeo đuổi thực hành nghệ thuật, văn chương, âm nhạc và kiến tạo không gian trong suốt 13 năm qua."
             },
             {
-                title: "Triết lý",
+                title: "Học vấn",
                 date: "",
-                excerpt: "Less is more.",
-                content: "Trong một thế giới đầy tiếng ồn, sự tĩnh lặng là thứ xa xỉ nhất. Tôi cố gắng đưa sự tĩnh lặng đó vào từng thước phim, từng bức tranh và từng không gian sống mà mình kiến tạo."
+                excerpt: "",
+                content: "2013 – Tốt nghiệp Thạc sỹ « Chất lượng và Môi trường trong Chăn nuôi », trường Đại học Tours, Pháp\n2012 – Tốt nghiệp Bác sỹ Thú y, trường Đại học Nông Lâm TP.HCM"
+            },
+            {
+                title: "Tuyên ngôn",
+                date: "",
+                excerpt: "Il faut cultiver notre jardin.",
+                content: "« Il faut cultiver notre jardin » (Chúng ta phải chăm sóc, vun trồng khu vườn của mình)\n_ Voltaire_\n\n« There are always flowers for those who want to see them » (Những bông hoa luôn có mặt cho ai muốn nhìn thấy chúng)\n_Henri Matisse_\n\nTôi là một người làm vườn chăm chỉ cày xới mảnh đất bên trong mình để những hạt giống có thể nảy mầm, cây cối lớn lên và những bông hoa có thể hiển lộ. Và tôi biết những khu vườn khác cũng đầy hoa đẹp thật phong phú.\n\nSự công nhận, động viên và tán thưởng của người khác là một khích lệ vô cùng ý nghĩa với tôi. Nhưng động cơ của tất cả những điều tôi đang mải mê làm là vì tôi thật sự yêu thích chúng."
             }
         ]
     },
     "en": {
-        title: "about nhat truong",
-        description: "A journey to find beauty in minimalism.",
+        title: "about",
         items: [
             {
-                title: "Biography",
+                title: "", // Removed "Biography"
                 date: "",
-                excerpt: "Storyteller through images and spaces.",
-                content: "Born and raised in Saigon, I find endless inspiration in the simplest things. \n\nI believe art doesn't need to be loud. A still photo, a dry branch, or an empty space in a room has its own language."
+                excerpt: "",
+                content: "Hello, I am Ngo Nhat Truong. Born and raised in Saigon. \n\nCurrently, besides my main profession as a Veterinarian, I have also been pursuing art, literature, music, and space creation for the past 13 years."
             },
             {
-                title: "Philosophy",
+                title: "Education",
                 date: "",
-                excerpt: "Less is more.",
-                content: "In a world full of noise, silence is the greatest luxury. I try to infuse that silence into every film, every painting, and every living space I curate."
+                excerpt: "",
+                content: "2013 – Master in « Quality and Environment in Animal Production », University of Tours, France\n2012 – Doctor of Veterinary Medicine, Nong Lam University, Ho Chi Minh City"
+            },
+            {
+                title: "Artist Statement",
+                date: "",
+                excerpt: "",
+                content: "« Il faut cultiver notre jardin » (We must cultivate our garden)\n_ Voltaire_\n\n« There are always flowers for those who want to see them »\n_Henri Matisse_\n\nI am a diligent gardener plowing the soil within myself so that seeds can germinate, trees can grow, and flowers can reveal themselves. And I know that other gardens are also full of beautiful, rich flowers.\n\nRecognition, encouragement, and applause from others are incredibly meaningful incentives to me. But the motive for all the things I am passionately doing is simply because I truly love them."
             }
         ]
     },
     "fr": {
-        title: "à propos de nhat truong",
-        description: "Un voyage pour trouver la beauté dans le minimalisme.",
+        title: "à propos",
         items: [
             {
-                title: "Biographie",
+                title: "", // Removed "Biographie"
                 date: "",
-                excerpt: "Conteur à travers les images et les espaces.",
-                content: "Né et élevé à Saigon, je trouve une inspiration infinie dans les choses les plus simples. \n\nJe crois que l'art n'a pas besoin d'être bruyant. Une photo immobile, une branche sèche ou un espace vide dans une pièce possède son propre langage."
+                excerpt: "",
+                content: "Bonjour, je suis Ngo Nhat Truong. Né et élevé à Saigon. \n\nActuellement, en plus de mon métier principal de vétérinaire, je poursuis également une pratique artistique, littéraire, musicale et la création d'espaces depuis 13 ans."
             },
             {
-                title: "Philosophie",
+                title: "Formation",
                 date: "",
-                excerpt: "Moins, c'est plus.",
-                content: "Dans un monde plein de bruit, le silence est le plus grand luxe. J'essaie d'infuser ce silence dans chaque film, chaque peinture et chaque espace de vie que je crée."
+                excerpt: "",
+                content: "2013 – Master « Qualité et Environnement des Productions Animales », Université de Tours, France\n2012 – Docteur Vétérinaire, Université d'Agriculture et de Forêt de Ho Chi Minh-Ville"
+            },
+            {
+                title: "Artist Statement",
+                date: "",
+                excerpt: "",
+                content: "« Il faut cultiver notre jardin »\n_ Voltaire_\n\n« Il y a toujours des fleurs pour ceux qui veulent les voir »\n_Henri Matisse_\n\nJe suis un jardinier diligent qui laboure la terre en moi pour que les graines puissent germer, les arbres grandir et les fleurs se révéler. Et je sais que d'autres jardins sont aussi remplis de belles fleurs riches.\n\nLa reconnaissance, les encouragements et les applaudissements des autres sont pour moi des incitations extrêmement significatives. Mais la motivation de tout ce que je fais passionnément est simplement que je les aime vraiment."
             }
         ]
     }
