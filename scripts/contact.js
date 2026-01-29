@@ -7,7 +7,7 @@ const contactData = {
                 date: "",
                 excerpt: "",
                 // QUAN TRỌNG: Chỉ giữ lại class="contact-link", KHÔNG CÓ style="..."
-                content: `Phone: <a href="tel:+84949452277" class="contact-link">+84 (0) 949 452 277</a>\nEmail: <a href="mailto:kejazz1989@gmail.com" class="contact-link">kejazz1989@gmail.com</a>\nFacebook: <a href="https://www.facebook.com/kejazz1989" target="_blank" class="contact-link">Ngô Nhật Trường</a>`
+                content: `Điện thoại: <a href="tel:+84949452277" class="contact-link">+84 (0) 949 452 277</a>\nEmail: <a href="mailto:kejazz1989@gmail.com" class="contact-link">kejazz1989@gmail.com</a>\nFacebook: <a href="https://www.facebook.com/kejazz1989" target="_blank" class="contact-link">Ngô Nhật Trường</a>`
             }
         ]
     },
