@@ -1,20 +1,57 @@
 const spacesData = {
-    title: "không gian",
-    description: "Nơi chốn bình yên để trở về.",
-    items: [
-        {
-            title: "Góc đọc sách bên cửa sổ",
-            date: "Thiết kế: 2025",
-            excerpt: "Tận dụng ánh sáng tự nhiên cho không gian nhỏ.",
-            content: "Một chiếc ghế bành êm ái, một kệ sách gỗ sồi và chậu cây lưỡi hổ. Chỉ cần vậy là đủ cho những chuyến phiêu lưu qua từng trang sách."
-        },
-        {
-            title: "Ban công thiền",
-            date: "2024",
-            excerpt: "Cải tạo ban công chung cư thành vườn thiền.",
-            content: "Sử dụng sỏi trắng, đá cuội và tre trúc để tạo vách ngăn. Không gian tách biệt hoàn toàn với sự ồn ào của đô thị bên dưới."
-        }
-    ]
+    "vi": {
+        title: "không gian",
+        description: "Nơi chốn bình yên để trở về.",
+        items: [
+            {
+                title: "Góc đọc sách bên cửa sổ",
+                date: "Thiết kế: 2025",
+                excerpt: "Tận dụng ánh sáng tự nhiên cho không gian nhỏ.",
+                content: "Một chiếc ghế bành êm ái, một kệ sách gỗ sồi và chậu cây lưỡi hổ. Chỉ cần vậy là đủ cho những chuyến phiêu lưu qua từng trang sách."
+            },
+            {
+                title: "Ban công thiền",
+                date: "2024",
+                excerpt: "Cải tạo ban công chung cư thành vườn thiền.",
+                content: "Sử dụng sỏi trắng, đá cuội và tre trúc để tạo vách ngăn. Không gian tách biệt hoàn toàn với sự ồn ào của đô thị bên dưới."
+            }
+        ]
+    },
+    "en": {
+        title: "spaces",
+        description: "Peaceful places to return to.",
+        items: [
+            {
+                title: "Reading Corner by the Window",
+                date: "Designed: 2025",
+                excerpt: "Utilizing natural light for small spaces.",
+                content: "A comfortable armchair, an oak bookshelf, and a snake plant. That's all it takes for adventures through every page."
+            },
+            {
+                title: "Meditation Balcony",
+                date: "2024",
+                excerpt: "Renovating an apartment balcony into a zen garden.",
+                content: "Using white gravel, pebbles, and bamboo to create partitions. A space completely separated from the urban noise below."
+            }
+        ]
+    },
+    "fr": {
+        title: "espaces",
+        description: "Lieux paisibles où revenir.",
+        items: [
+            {
+                title: "Coin Lecture près de la Fenêtre",
+                date: "Design : 2025",
+                excerpt: "Utiliser la lumière naturelle pour les petits espaces.",
+                content: "Un fauteuil confortable, une étagère en chêne et une plante langue de belle-mère. C'est tout ce qu'il faut pour des aventures à travers chaque page."
+            },
+            {
+                title: "Balcon de Méditation",
+                date: "2024",
+                excerpt: "Rénovation d'un balcon d'appartement en jardin zen.",
+                content: "Utilisation de gravier blanc, de galets et de bambou pour créer des cloisons. Un espace complètement séparé du bruit urbain en contrebas."
+            }
+        ]
+    }
 };
-
-console.log("Đã nạp module: Không gian");
+console.log("Đã nạp module: Không gian (Đa ngôn ngữ)");

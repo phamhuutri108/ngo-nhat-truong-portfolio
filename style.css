@@ -30,13 +30,18 @@ body {
 
 
 
-/* Thêm mới đoạn này để chỉnh ảnh logo */
+/* --- CẤU HÌNH LOGO (HEADER - DESKTOP) --- */
 .logo-image {
-    width: 260px; 
-    height: auto;
+    /* Tăng kích thước tại đây */
+    height: 50px;       /* Cũ là 42px -> Tăng lên 60px */
+    
+    width: auto;
     display: block;
+    object-fit: contain;
     margin-bottom: 10px;
 }
+
+
 
 .brand h1 {
     display: none;
@@ -47,8 +52,8 @@ body {
 }
 
 .tagline {
-    font-family: sans-serif;
-    font-size: 9px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
     text-transform: lowercase;
     letter-spacing: 0.4em;
     color: #000; /* Đổi từ #aaa sang #000 */
@@ -76,8 +81,9 @@ body {
     cursor: pointer;
 }
 
-.navigation a:hover {
-    color: blue;
+.navigation a.nav-active {
+    color: blue !important; /* Bắt buộc màu xanh */
+    font-weight: 600;       /* Đậm hơn một chút để nổi bật */
 }
 
 /* Nội dung chính */
@@ -256,47 +262,152 @@ h1, h2, h3, h4, h5, p, .quote, .tagline {
 
 /* --- MÀN HÌNH CHÀO (INTRO SCREEN) --- */
 #intro-screen {
-    position: fixed;      /* Bắt buộc: Cố định vị trí để phủ lên màn hình */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;         /* Chiều rộng bằng 100% khung nhìn */
-    height: 100vh;        /* Chiều cao bằng 100% khung nhìn */
-    background-color: #ffffff; /* Nền trắng che khuất web bên dưới */
-    z-index: 9999;        /* Lớp cao nhất, nằm đè lên mọi thứ */
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 9999;
     
-    /* Căn giữa logo tuyệt đối */
     display: flex;
     justify-content: center;
     align-items: center;
     
-    /* Hiệu ứng mờ dần */
     transition: opacity 0.8s ease-in-out, visibility 0.8s;
     cursor: pointer;
 }
 
-/* CSS cho Logo trong màn hình chào */
 #intro-screen img {
-    width: 140px;         /* Kích thước nhỏ gọn */
-    height: auto;
+    height: 40px; /* Kích thước intro (lớn hơn header một chút) */
+    width: auto;
     
-    /* Trạng thái mặc định: Trắng đen, hơi mờ */
     filter: grayscale(100%);
     opacity: 0.6;
-    
     transition: all 0.5s ease;
 }
 
-/* Hiệu ứng khi rê chuột vào logo */
-#intro-screen img:hover {
-    filter: grayscale(0%); /* Hiện màu thật */
-    opacity: 1;            /* Sáng rõ lên */
-    
+#intro-screen:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
-/* Class để ẩn màn hình sau khi bấm */
 #intro-screen.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- CẬP NHẬT HEADER --- */
+.header {
+    position: relative; /* Quan trọng: Làm mốc để ghim nút ngôn ngữ */
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid #f5f5f5; /* Dòng kẻ ngăn cách */
+}
+
+/* --- NÚT CHUYỂN NGÔN NGỮ (CHUNG CHO CẢ PC VÀ MOBILE) --- */
+.lang-switcher {
+    position: absolute;
+    bottom: 15px; /* Nằm cách dòng kẻ bên dưới 15px */
+    right: 0;     /* Sát mép phải của khung web */
+    
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; /* Cỡ chữ vừa phải */
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #bbb;
+    z-index: 100;
+    
+    /* Đảm bảo không bị xuống dòng */
+    white-space: nowrap; 
+}
+
+.lang-opt {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0 2px;
+}
+
+.lang-opt:hover {
+    color: #000;
+}
+
+.lang-opt.active {
+    color: blue;
+    font-weight: bold;
+}
+
+.separator {
+    margin: 0 1px;
+    color: #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- RESPONSIVE: ĐIỆN THOẠI --- */
+@media (max-width: 768px) {
+    .header {
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 30px; 
+    }
+
+    /* 1. CHỈNH LOGO MOBILE */
+    .brand-logo {
+        margin-bottom: 5px;
+    }
+
+    .logo-image {
+        height: 30px; /* Đã tăng ~30% (cũ là 22px) */
+        width: auto;
+        margin-bottom: 5px;
+    }
+
+    /* Các phần khác (Nút ngôn ngữ, Menu) giữ nguyên không đổi */
+    .lang-switcher {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;    
+        margin-bottom: 10px; 
+        font-size: 14px;
+    }
+    
+    .navigation ul {
+        justify-content: center;
+        gap: 15px;
+    }
+}
