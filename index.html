@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ngô nhật trường</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Import font có chân cho phong cách tối giản -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div id="intro-screen">
+        <img src="assets/home/logo.png" alt="Ngô Nhật Trường Logo">
+    </div>
+
     <div class="wrapper">
-        <!-- Header: Logo thư pháp và Tên thương hiệu sát mép trái -->
         <header class="header">
             <div class="brand">
                 <div class="brand-logo">
-                    <!-- Thay link ảnh thực tế của bạn vào đây -->
                     <img src="assets/home/logo.png" alt="ngô nhật trường calligraphy" class="logo-image">
                 </div>
                 <h1>ngô nhật trường</h1>
@@ -68,69 +69,50 @@
     <script src="scripts/music.js"></script>
     <script src="scripts/spaces.js"></script>
 
+    <script>
+        // --- A. XỬ LÝ MÀN HÌNH CHÀO (INTRO SCREEN) ---
+        // (Đây là phần bạn vừa hỏi - đặt ở đầu script để chạy trước)
+        document.addEventListener('DOMContentLoaded', () => {
+            const introScreen = document.getElementById('intro-screen');
+            
+            if (introScreen) {
+                introScreen.addEventListener('click', function() {
+                    this.classList.add('hidden');
+                    
+                    setTimeout(() => {
+                        this.remove();
+                    }, 1000); 
+                });
+            }
+        });
 
+        // --- B. LOGIC CHO SLIDER (TRANG CHỦ) ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
 
+        function changeSlide(direction) {
+            if(slides.length === 0) return; // Kiểm tra an toàn
 
+            slides[currentSlide].classList.remove('active');
+            currentSlide += direction;
 
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
 
-
-
-
-<script>
-    // Logic cho Slider Thiền định
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function changeSlide(direction) {
-        // 1. Ẩn slide hiện tại
-        slides[currentSlide].classList.remove('active');
-
-        // 2. Tính toán vị trí slide tiếp theo
-        currentSlide += direction;
-
-        // Nếu đi quá slide cuối thì quay về đầu
-        if (currentSlide >= slides.length) {
-            currentSlide = 0;
+            slides[currentSlide].classList.add('active');
         }
-        // Nếu lùi quá slide đầu thì quay về cuối
-        if (currentSlide < 0) {
-            currentSlide = slides.length - 1;
-        }
 
-        // 3. Hiện slide mới
-        slides[currentSlide].classList.add('active');
-    }
-
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-        // 1. CẬP NHẬT dataMapping ĐỂ NHẬN DIỆN ABOUT VÀ CONTACT
+        // --- C. LOGIC MENU & NỘI DUNG ĐỘNG (DATA MAPPING) ---
         const dataMapping = {
-            'about': (typeof aboutData !== 'undefined') ? aboutData : null,     // Thêm dòng này
+            'about': (typeof aboutData !== 'undefined') ? aboutData : null,
             'films': (typeof filmsData !== 'undefined') ? filmsData : null,
             'paintings': (typeof paintingsData !== 'undefined') ? paintingsData : null,
             'poets': (typeof poetryData !== 'undefined') ? poetryData : null,
             'music': (typeof musicData !== 'undefined') ? musicData : null,
             'space': (typeof spacesData !== 'undefined') ? spacesData : null,
-            'contact': (typeof contactData !== 'undefined') ? contactData : null // Thêm dòng này
+            'contact': (typeof contactData !== 'undefined') ? contactData : null
         };
 
-        // 2. Lắng nghe sự kiện click vào Menu
         const navLinks = document.querySelectorAll('.navigation a');
         const sections = document.querySelectorAll('.section');
         const dynamicDisplay = document.getElementById('dynamic-display');
@@ -144,10 +126,8 @@
         });
 
         function switchSection(targetId) {
-            // Ẩn section tĩnh (chỉ còn mỗi #home là tĩnh)
             sections.forEach(sec => sec.classList.remove('section-active'));
 
-            // Reset vùng nội dung động
             if (dynamicDisplay) {
                 dynamicDisplay.innerHTML = '';
                 dynamicDisplay.classList.remove('section-active');
@@ -156,10 +136,8 @@
             const staticSection = document.getElementById(targetId);
 
             if (staticSection) {
-                // Nếu bấm vào Home
                 staticSection.classList.add('section-active');
             } else if (dataMapping[targetId]) {
-                // Nếu bấm vào các mục khác (About, Films, Contact...)
                 renderDynamicPage(dataMapping[targetId]);
                 if (dynamicDisplay) {
                     dynamicDisplay.classList.add('section', 'section-active');
@@ -200,24 +178,5 @@
             dynamicDisplay.innerHTML = htmlContent;
         }
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

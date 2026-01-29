@@ -28,6 +28,8 @@ body {
     border-bottom: 1px solid #f5f5f5;
 }
 
+
+
 /* Thêm mới đoạn này để chỉnh ảnh logo */
 .logo-image {
     width: 260px; 
@@ -246,3 +248,55 @@ h1, h2, h3, h4, h5, p, .quote, .tagline {
     margin: 0;
     /* Nếu muốn chữ đẹp hơn, bạn có thể chỉnh size hoặc line-height tại đây */
 }
+
+
+
+
+
+
+/* --- MÀN HÌNH CHÀO (INTRO SCREEN) --- */
+#intro-screen {
+    position: fixed;      /* Bắt buộc: Cố định vị trí để phủ lên màn hình */
+    top: 0;
+    left: 0;
+    width: 100vw;         /* Chiều rộng bằng 100% khung nhìn */
+    height: 100vh;        /* Chiều cao bằng 100% khung nhìn */
+    background-color: #ffffff; /* Nền trắng che khuất web bên dưới */
+    z-index: 9999;        /* Lớp cao nhất, nằm đè lên mọi thứ */
+    
+    /* Căn giữa logo tuyệt đối */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Hiệu ứng mờ dần */
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    cursor: pointer;
+}
+
+/* CSS cho Logo trong màn hình chào */
+#intro-screen img {
+    width: 140px;         /* Kích thước nhỏ gọn */
+    height: auto;
+    
+    /* Trạng thái mặc định: Trắng đen, hơi mờ */
+    filter: grayscale(100%);
+    opacity: 0.6;
+    
+    transition: all 0.5s ease;
+}
+
+/* Hiệu ứng khi rê chuột vào logo */
+#intro-screen img:hover {
+    filter: grayscale(0%); /* Hiện màu thật */
+    opacity: 1;            /* Sáng rõ lên */
+    
+}
+
+/* Class để ẩn màn hình sau khi bấm */
+#intro-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
