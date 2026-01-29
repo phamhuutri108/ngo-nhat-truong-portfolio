@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ngô nhật trường</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Import font có chân cho phong cách tối giản -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Header: Tên thương hiệu sát mép trái -->
+        <header class="header">
+            <div class="brand">
+                <h1>ngô nhật trường</h1>
+                <p class="tagline">người kể chuyện qua hình ảnh & mầm xanh</p>
+            </div>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#home">trang chủ</a></li>
+                    <li><a href="#about">về tôi</a></li>
+                    <li><a href="#short-films">phim ngắn</a></li>
+                    <li><a href="#paintings">tranh</a></li>
+                    <li><a href="#poets">thơ</a></li>
+                    <li><a href="#music">âm nhạc</a></li>
+                    <li><a href="#plants">cây cối</a></li>
+                    <li><a href="#contact">liên hệ</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <!-- Phần Home (Trang chủ) -->
+            <section id="home" class="section section-active">
+                <div class="hero">
+                    <p class="quote">"Thế giới đầy những điều kỳ diệu lặng lẽ, chỉ chờ ta đủ kiên nhẫn để nhìn thấy."</p>
+                </div>
+                <div class="intro-text">
+                    <p>Chào mừng bạn đến với góc nhỏ của Trường. Nơi lưu giữ những lát cắt của cuộc sống qua ống kính, nét vẽ và những hơi thở nhẹ nhàng từ khu vườn.</p>
+                </div>
+            </section>
+
+            <!-- Phần About (Về tôi) -->
+            <section id="about" class="section">
+                <h2>về nhật trường</h2>
+                <p>Nội dung giới thiệu bản thân sẽ được viết tại đây. Một người làm phim, một người yêu cây.</p>
+            </section>
+
+            <!-- Phần Contact (Liên hệ) -->
+            <section id="contact" class="section">
+                <h2>liên hệ</h2>
+                <p>Mọi thông tin kết nối xin gửi về: contact@ngonhattruong.com</p>
+            </section>
+
+            <!-- Các khu vực trống để nạp dữ liệu từ JS -->
+            <section id="dynamic-content" class="section"></section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2026 ngô nhật trường — lưu giữ từng hơi thở</p>
+        </footer>
+    </div>
+
+    <!-- Nạp các tệp script dữ liệu -->
+    <script src="scripts/short-films.js"></script>
+    <script src="scripts/paintings.js"></script>
+    <script src="scripts/poets.js"></script>
+    <script src="scripts/music.js"></script>
+    <script src="scripts/plants.js"></script>
+</body>
+</html>
