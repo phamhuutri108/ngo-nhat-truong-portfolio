@@ -16,10 +16,10 @@
             <div class="brand">
                 <div class="brand-logo">
                     <!-- Thay link ảnh thực tế của bạn vào đây -->
-                    <img src="https://assets.phamhuutri.com/assets/home/calligraphy-logo.png" alt="ngô nhật trường calligraphy" class="logo-image">
+                    <img src="assets/home/logo.png" alt="ngô nhật trường calligraphy" class="logo-image">
                 </div>
                 <h1>ngô nhật trường</h1>
-                <p class="tagline">người kể chuyện qua hình ảnh & không gian</p>
+                <p class="tagline">người làm phim, làm vườn, viết và sắp đặt không gian.</p>
             </div>
 
             <nav class="navigation">
@@ -37,31 +37,21 @@
         </header>
 
         <main class="content">
-            <!-- Phần Trang chủ -->
             <section id="home" class="section section-active">
-                <div class="hero">
-                    <p class="quote">"Thế giới đầy những điều kỳ diệu lặng lẽ, chỉ chờ ta đủ kiên nhẫn để nhìn thấy."</p>
+                <div class="hero-slider">
+                    <div class="slides-container">
+                        <img src="assets/home/home-image/home-image-1.jpeg" class="slide active" alt="không gian 1">
+                        <img src="assets/home/home-image/home-image-2.jpeg" class="slide" alt="không gian 2">
+                    </div>
+                    <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button>
                 </div>
+                
                 <div class="intro-text">
                     <p>Chào mừng bạn đến với góc nhỏ của Trường. Nơi lưu giữ những lát cắt của cuộc sống qua ống kính, nét vẽ và những khoảng lặng trong không gian sống.</p>
                 </div>
             </section>
 
-            <!-- Phần Về tôi -->
-            <section id="about" class="section">
-                <h2>về nhật trường</h2>
-                <div class="placeholder-box">
-                    <p>Nội dung giới thiệu về hành trình nghệ thuật và triết lý sống tối giản của Trường.</p>
-                </div>
-            </section>
-
-            <!-- Phần Liên hệ -->
-            <section id="contact" class="section">
-                <h2>liên hệ</h2>
-                <p>Mọi thông tin kết nối và hợp tác xin gửi về: contact@ngonhattruong.com</p>
-            </section>
-
-            <!-- Khu vực hiển thị nội dung từ các file JS -->
             <div id="dynamic-display"></div>
         </main>
 
@@ -70,11 +60,164 @@
         </footer>
     </div>
 
-    <!-- Nạp các tệp script dữ liệu đã cập nhật tên -->
+    <script src="scripts/about.js"></script>
+    <script src="scripts/contact.js"></script>
     <script src="scripts/films.js"></script>
-    <script src="scripts/paintings.js"></script>
-    <script src="scripts/poets.js"></script>
+    <script src="scripts/painting.js"></script>
+    <script src="scripts/poetry.js"></script>
     <script src="scripts/music.js"></script>
-    <script src="scripts/space.js"></script>
+    <script src="scripts/spaces.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+    // Logic cho Slider Thiền định
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function changeSlide(direction) {
+        // 1. Ẩn slide hiện tại
+        slides[currentSlide].classList.remove('active');
+
+        // 2. Tính toán vị trí slide tiếp theo
+        currentSlide += direction;
+
+        // Nếu đi quá slide cuối thì quay về đầu
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+        // Nếu lùi quá slide đầu thì quay về cuối
+        if (currentSlide < 0) {
+            currentSlide = slides.length - 1;
+        }
+
+        // 3. Hiện slide mới
+        slides[currentSlide].classList.add('active');
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+        // 1. CẬP NHẬT dataMapping ĐỂ NHẬN DIỆN ABOUT VÀ CONTACT
+        const dataMapping = {
+            'about': (typeof aboutData !== 'undefined') ? aboutData : null,     // Thêm dòng này
+            'films': (typeof filmsData !== 'undefined') ? filmsData : null,
+            'paintings': (typeof paintingsData !== 'undefined') ? paintingsData : null,
+            'poets': (typeof poetryData !== 'undefined') ? poetryData : null,
+            'music': (typeof musicData !== 'undefined') ? musicData : null,
+            'space': (typeof spacesData !== 'undefined') ? spacesData : null,
+            'contact': (typeof contactData !== 'undefined') ? contactData : null // Thêm dòng này
+        };
+
+        // 2. Lắng nghe sự kiện click vào Menu
+        const navLinks = document.querySelectorAll('.navigation a');
+        const sections = document.querySelectorAll('.section');
+        const dynamicDisplay = document.getElementById('dynamic-display');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                const targetId = this.getAttribute('href').substring(1);
+                switchSection(targetId);
+            });
+        });
+
+        function switchSection(targetId) {
+            // Ẩn section tĩnh (chỉ còn mỗi #home là tĩnh)
+            sections.forEach(sec => sec.classList.remove('section-active'));
+
+            // Reset vùng nội dung động
+            if (dynamicDisplay) {
+                dynamicDisplay.innerHTML = '';
+                dynamicDisplay.classList.remove('section-active');
+            }
+
+            const staticSection = document.getElementById(targetId);
+
+            if (staticSection) {
+                // Nếu bấm vào Home
+                staticSection.classList.add('section-active');
+            } else if (dataMapping[targetId]) {
+                // Nếu bấm vào các mục khác (About, Films, Contact...)
+                renderDynamicPage(dataMapping[targetId]);
+                if (dynamicDisplay) {
+                    dynamicDisplay.classList.add('section', 'section-active');
+                }
+            }
+        }
+
+        function renderDynamicPage(data) {
+            if (!data || !dynamicDisplay) return;
+
+            let htmlContent = `
+                <div class="dynamic-content fade-in">
+                    <h2>${data.title}</h2>
+                    <p class="dynamic-desc">${data.description}</p>
+                    <div class="items-list">
+            `;
+
+            if (data.items && data.items.length > 0) {
+                data.items.forEach(item => {
+                    htmlContent += `
+                        <div class="item-card">
+                            <div class="item-header">
+                                <span class="item-title">${item.title || ''}</span>
+                                ${item.date ? `<span class="item-date"> — ${item.date}</span>` : ''}
+                            </div>
+                            <div class="item-body">
+                                ${item.excerpt ? `<p>${item.excerpt}</p>` : ''}
+                                ${item.content ? `<div style="white-space: pre-line; margin-top:10px;">${item.content}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                htmlContent += `<p><em>(Nội dung đang được cập nhật...)</em></p>`;
+            }
+
+            htmlContent += `</div></div>`;
+            dynamicDisplay.innerHTML = htmlContent;
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

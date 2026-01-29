@@ -8,7 +8,7 @@
 body {
     font-family: 'Cormorant Garamond', serif;
     background-color: #fff;
-    color: #222;
+    color: #000; /* Đen thuần */
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -28,7 +28,16 @@ body {
     border-bottom: 1px solid #f5f5f5;
 }
 
+/* Thêm mới đoạn này để chỉnh ảnh logo */
+.logo-image {
+    width: 260px; 
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
 .brand h1 {
+    display: none;
     font-size: 3rem;
     font-weight: 300;
     letter-spacing: -2px;
@@ -38,9 +47,9 @@ body {
 .tagline {
     font-family: sans-serif;
     font-size: 9px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 0.4em;
-    color: #aaa;
+    color: #000; /* Đổi từ #aaa sang #000 */
     margin-top: 10px;
 }
 
@@ -57,15 +66,16 @@ body {
 
 .navigation a {
     text-decoration: none;
-    color: #888;
+    color: #000; /* Chuyển sang màu đen thuần */
     font-size: 13px;
-    text-transform: uppercase;
+    text-transform: lowercase; /* Chuyển thành chữ thường toàn bộ */
     letter-spacing: 0.1em;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
 .navigation a:hover {
-    color: #000;
+    color: blue;
 }
 
 /* Nội dung chính */
@@ -73,8 +83,52 @@ body {
     padding: 80px 0;
 }
 
+/* --- QUẢN LÝ HIỂN THỊ CÁC MỤC --- */
 .section {
-    margin-bottom: 100px;
+    display: none; /* Mặc định ẩn tất cả các section */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.section-active {
+    display: block; /* Chỉ hiện section đang active */
+    opacity: 1;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Định dạng cho nội dung lấy từ JS */
+.dynamic-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-transform: lowercase;
+}
+
+.dynamic-desc {
+    font-style: italic;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.item-card {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #eee;
+}
+
+.item-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.item-date {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 5px;
 }
 
 .hero {
@@ -84,10 +138,11 @@ body {
     margin-bottom: 60px;
 }
 
+/* Sửa câu trích dẫn (quote) thành màu đen */
 .quote {
     font-size: 2.5rem;
     font-style: italic;
-    color: #444;
+    color: #000; /* Đổi từ #444 sang #000 */
 }
 
 .footer {
@@ -99,4 +154,95 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: #bbb;
+}
+
+
+/* Các tiêu đề và đoạn văn: Màu đen */
+h1, h2, h3, h4, h5, p, .quote, .tagline {
+    color: #000;
+}
+
+/* Riêng Footer: Giữ màu xám như yêu cầu cũ */
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid #f5f5f5;
+    font-family: sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #bbb; 
+}
+
+
+
+/* --- SLIDER THIỀN ĐỊNH --- */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Chiều cao cố định cho khung ảnh, bạn có thể chỉnh to/nhỏ tùy ý */
+    margin-bottom: 60px;
+    overflow: hidden;
+    background-color: #fdfaf5; /* Giữ màu nền cũ để lúc load ảnh không bị chớp trắng */
+}
+
+.slides-container {
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giúp ảnh tự căn chỉnh lấp đầy khung mà không bị méo */
+    opacity: 0; /* Mặc định ẩn ảnh */
+    transition: opacity 0.8s ease-in-out; /* Hiệu ứng chuyển mờ nhẹ nhàng (0.8s) */
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1; /* Ảnh nào có class active sẽ hiện lên */
+    z-index: 2;
+}
+
+/* Nút điều hướng mũi tên */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2rem; /* Kích thước mũi tên */
+    color: #888; /* Màu xám nhạt tinh tế */
+    cursor: pointer;
+    z-index: 10;
+    padding: 20px;
+    opacity: 0.5;
+    transition: opacity 0.3s, color 0.3s;
+}
+
+.nav-btn:hover {
+    opacity: 1;
+    color: #000; /* Rê chuột vào mũi tên sẽ đậm lên */
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+
+
+
+/* Căn lề đoạn giới thiệu thẳng tắp với ảnh */
+.intro-text {
+    width: 100%;
+    margin-top: 30px; /* Khoảng cách giữa ảnh và chữ */
+}
+
+.intro-text p {
+    text-align: justify; /* Kéo giãn chữ chạm đều 2 lề trái/phải */
+    margin: 0;
+    /* Nếu muốn chữ đẹp hơn, bạn có thể chỉnh size hoặc line-height tại đây */
 }
